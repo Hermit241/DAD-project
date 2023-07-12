@@ -17,7 +17,7 @@ import my.edu.utem.ftmk.dad.project.model.Student;
 
 @Controller
 public class AttendanceMenuController {
-
+//test
 	@GetMapping("/attendance/list")
 	public String getAttendance(Model model){
 		

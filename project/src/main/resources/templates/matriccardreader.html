@@ -9,11 +9,11 @@
     <h2 >Matric Card Reader</h2>
 
     <div >
-      <form th:action="@{/attendance/save/matricno/{matricno}/{exam}}" method="post" enctype="multipart/form-data">
+      <form th:action="@{/attendance/save}" th:object="${attendance}" method="post" enctype="multipart/form-data">
         <div>
         <div><label for="exam">Examinations</label></div>
         <div>
-        	<select name="exam" id="exam" th:value="exam" >
+        	<select name="attendance.examination" id="exam" th:field="*{examination.id}" >
         		<option th:each="examination: ${examinations}" 
         		th:value=${examination.id}>[[${examination.course.coursename}]] - [[${examination.examtime}]]</option>
         	</select>
@@ -24,12 +24,13 @@
           <div>
             <label for="matricno">Enter Matric No</label>
             <div>
-              <input type="text" name="matricno"
+              <input type="text" name="attendance.student.matricno" th:field="*{student.matricno}"
                 id="matricno" />
             </div>
           </div>
-
+			
           <div>
+          	<input type="hidden" th:value="${attendanceInputType}" th:field="*{attendanceInputType}"/>
             <input type="submit" value="Enter" />
             <input type="reset" value="Clear" />
           </div>

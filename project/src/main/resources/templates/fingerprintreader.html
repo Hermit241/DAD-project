@@ -9,11 +9,11 @@
     <h2 >Fingerprint Reader</h2>
 
     <div >
-      <form th:action="@{/attendance/save/fingerprint/{fingerprint}/{exam}}" method="post" enctype="multipart/form-data">
+      <form th:action="@{/attendance/save}" th:object="${attendance}" method="post" enctype="multipart/form-data">
         <div>
         <div><label for="exam">Examinations</label></div>
         <div>
-        	<select name="exam" id="exam" th:value="exam" >
+        	<select name="attendance.examination" id="exam" th:field="*{examination.id}" >
         		<option th:each="examination: ${examinations}" 
         		th:value=${examination.id}>[[${examination.course.coursename}]] - [[${examination.examtime}]]</option>
         	</select>
@@ -22,14 +22,15 @@
 
         <div>
           <div>
-            <label for="fingerprint">Enter fingerprint id</label>
+            <label for="fingerprintid">Enter fingerprint id</label>
             <div>
-              <input type="text" name="fingerprint"
+              <input type="text" name="attendance.student.fingerprintid" th:field="*{student.fingerprintid}"
                 id="fingerprint" />
             </div>
           </div>
 
           <div>
+          	<input type="hidden" th:value="${attendanceInputType}" th:field="*{attendanceInputType}"/>
             <input type="submit" value="Enter" />
             <input type="reset" value="Clear" />
           </div>

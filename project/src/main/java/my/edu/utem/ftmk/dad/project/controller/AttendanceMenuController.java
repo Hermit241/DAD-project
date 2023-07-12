@@ -31,7 +31,7 @@ public class AttendanceMenuController {
 		List<Attendance> attendancelist = Arrays.asList(attendances);
 		
 		model.addAttribute("attendances", attendancelist);
-		System.out.println(attendancelist.get(1).getAttendtime() + " - " + attendancelist.get(1).getAttendancestatus());
+		//System.out.println(attendancelist.get(1).getAttendtime() + " - " + attendancelist.get(1).getAttendancestatus());
 		return "attendancemenu";
 	}
 	

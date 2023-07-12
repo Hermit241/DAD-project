@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Student Attendance</title>
+</head>
+<body>
+<h1>List of Attendances</h1>
+<br>
+<div th:if="${attendances.size() > 0}">
+      <table border="1">
+        <thead >
+          <tr>
+            <th scope="col">Matric No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Examination Course</th>
+            <th scope="col">Exam Time</th>
+            <th scope="col">Time attended</th>
+            <th scope="col">status</th>
+            <!-- <th scope="col">Action</th>  -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="attendance : ${attendances}">
+            <th scope="row">[[${attendance.student.matricno}]]</th>
+            <td>[[${attendance.student.studentname}]]</td>
+            <td>[[${attendance.examination.course.coursename}]] - [[${attendance.examination.course.coursecode}]]</td>
+            <td>[[${attendance.examination.examtime}]]</td>
+            <td>[[${attendance.attendtime}]]</td>
+            <td>[[${attendance.attendancestatus}]]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div th:unless="${attendances.size() > 0}">
+      <span>No record found!</span>
+    </div>
+</body>
+</html>

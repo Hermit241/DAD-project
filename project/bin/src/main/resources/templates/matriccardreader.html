@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Matric Card Reader</title>
+</head>
+<body>
+<div>
+    <h2 >Matric Card Reader</h2>
+
+    <div >
+      <form th:action="@{/attendance/save/matricno/{matricno}/{exam}}" method="post" enctype="multipart/form-data">
+        <div>
+        <div><label for="exam">Examinations</label></div>
+        <div>
+        	<select name="exam" id="exam" th:value="exam" >
+        		<option th:each="examination: ${examinations}" 
+        		th:value=${examination.id}>[[${examination.course.coursename}]] - [[${examination.examtime}]]</option>
+        	</select>
+        </div>
+        </div>
+
+        <div>
+          <div>
+            <label for="matricno">Enter Matric No</label>
+            <div>
+              <input type="text" name="matricno"
+                id="matricno" />
+            </div>
+          </div>
+
+          <div>
+            <input type="submit" value="Enter" />
+            <input type="reset" value="Clear" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

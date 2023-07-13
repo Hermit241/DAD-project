@@ -32,9 +32,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	 * @return the student with the specified fingerprint ID
 	 */
 	
-	
 
 	@Query("SELECT s FROM Student s WHERE s.fingerprintId = ?1")
-
 	Student findByFingerprint(String fingerprintid);
 }

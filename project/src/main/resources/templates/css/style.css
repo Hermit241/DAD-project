@@ -1,0 +1,38 @@
+/* styles.css */
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading styles */
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* Navigation styles */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.nav-link:hover {
+    color: #f00;
+    background-color: #ccc;
+}

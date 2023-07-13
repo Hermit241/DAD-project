@@ -23,6 +23,13 @@ import my.edu.utem.ftmk.dad.project.model.Student;
 @Controller
 public class AttendanceMenuController {
 	
+	@GetMapping("/attendance/index")
+	public String getIndex(){
+		
+	
+		return "index";
+	}
+	
 	 /**
      * Retrieves the list of attendance and populates the model.
      *

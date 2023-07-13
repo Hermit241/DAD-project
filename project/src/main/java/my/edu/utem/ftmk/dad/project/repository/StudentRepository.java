@@ -24,7 +24,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	@Query("SELECT s FROM Student s WHERE s.matricNo = ?1")
 	Student findByMatricNo(String matricno);
 	
-<<<<<<< HEAD
+
 	/**
 	 * Retrieves a student by fingerprint ID.
 	 *
@@ -32,9 +32,6 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 	 * @return the student with the specified fingerprint ID
 	 */
 	
-	@Query("SELECT s FROM Student s WHERE s.fingerprintid = ?1")
-=======
 	@Query("SELECT s FROM Student s WHERE s.fingerprintId = ?1")
->>>>>>> branch 'master' of https://github.com/Hermit241/DAD-project.git
 	Student findByFingerprint(String fingerprintid);
 }

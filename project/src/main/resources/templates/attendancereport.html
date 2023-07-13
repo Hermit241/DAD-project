@@ -2,31 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Student Attendance</title>
+<title>Attendance Report</title>
 </head>
 <body>
+<div>
 <h1>List of Attendances</h1>
+</div>
+<div>
+		<div><strong>Examination course:</strong> <span th:text="${examination.course.courseName}"></span></div>
+		<br>
+		<div><strong>Course Code:</strong> <span th:text="${examination.course.courseCode}"></span></div>
+		<br>
+		<div><strong>Exam time:</strong> <span th:text="${examination.examTime}"></span></div>
+	</div>
 <br>
 <div>
-	<div><label>Choose an examination to view student's attendance for that examination.</label></div>
-    <form th:action="@{/attendance/attendance-report}" th:object="${exam}" method="get" enctype="multipart/form-data">
-    <div>
-      	<div>
-      	<br>
-	      <div>
-	      	<select name="exam" id="exam" th:field="*{id}" >
-	      		<option th:each="examination: ${examinations}" 
-	      		th:value=${examination.id}>[[${examination.course.courseName}]] - [[${examination.examTime}]]</option>
-	      	</select>
-	      </div>
-	   </div>
-	   <br>
-        <div>
-          <input type="submit" value="Enter" />
-          <input type="reset" value="Clear" />
-        </div>
-      </div>
-    </form>
+<a th:href="@{/attendance/list}">Back</a>
 </div>
 <br>
 <div th:if="${attendances.size() > 0}">
@@ -35,7 +26,6 @@
           <tr>
             <th scope="col">Matric No</th>
             <th scope="col">Name</th>
-            <th scope="col">Examination Course</th>
             <th scope="col">Exam Time</th>
             <th scope="col">Time attended</th>
             <th scope="col">status</th>
@@ -46,7 +36,6 @@
           <tr th:each="attendance : ${attendances}">
             <th scope="row">[[${attendance.student.matricNo}]]</th>
             <td>[[${attendance.student.studentName}]]</td>
-            <td>[[${attendance.examination.course.courseName}]] - [[${attendance.examination.course.courseCode}]]</td>
             <td>[[${attendance.examination.examTime}]]</td>
             <td>[[${attendance.attendTime}]]</td>
             <td>[[${attendance.attendanceStatus}]]</td>
@@ -58,5 +47,6 @@
     <div th:unless="${attendances.size() > 0}">
       <span>No record found!</span>
     </div>
+
 </body>
 </html>

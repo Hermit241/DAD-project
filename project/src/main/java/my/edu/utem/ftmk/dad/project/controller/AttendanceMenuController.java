@@ -44,8 +44,37 @@ public class AttendanceMenuController {
 		List<Attendance> attendancelist = Arrays.asList(attendances);
 		
 		model.addAttribute("attendances", attendancelist);
-		//System.out.println(attendancelist.get(1).getAttendtime() + " - " + attendancelist.get(1).getAttendancestatus());
+		model.addAttribute("exam", new Examination());
+		model.addAttribute("examinations", getExaminations());
 		return "attendancemenu";
+	}
+	
+	@GetMapping("/attendance/attendance-report")
+	public String attendanceReport(@ModelAttribute("examination") Examination examination, Model model){
+
+		String attendanceUri =
+				"http://localhost:8080/attendanceapp/api/attendances/examination/" 
+				+ examination.getId();
+		String examinationUri = 
+				"http://localhost:8080/attendanceapp/api/examinations/"
+				+ examination.getId();
+		
+		RestTemplate restTemplate = new RestTemplate();
+		
+		ResponseEntity<Examination> examinationResponse =
+				restTemplate.getForEntity(examinationUri, Examination.class);
+		ResponseEntity<Attendance[]> attendanceResponse =
+				restTemplate.getForEntity(attendanceUri, Attendance[].class);
+		
+		Attendance attendances[] = attendanceResponse.getBody();
+		examination = examinationResponse.getBody();
+		
+		List<Attendance> attendancelist = Arrays.asList(attendances);
+		
+		model.addAttribute("attendances", attendancelist);
+		model.addAttribute("examination", examination);
+		
+		return "attendancereport";
 	}
 	
 	/**
@@ -232,7 +261,7 @@ public class AttendanceMenuController {
 
 		return "recordedattendance";
 	}
-
+	
 	/**
 	 * Validates the attendance based on the examination time and the attendance end time.
 	 *

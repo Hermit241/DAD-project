@@ -2,6 +2,8 @@ package my.edu.utem.ftmk.dad.project.model;
 
 import java.sql.Time;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * This classs
  */
@@ -100,7 +102,7 @@ public class Attendance {
 	/**
 	 * @param attendanceInputType the attendanceInputType to set
 	 */
-	public void setAttendanceInputType(String attendanceInputType) {
+	public void setAttendanceInputType(String attendanceInputType) { 
 		this.attendanceInputType = attendanceInputType;
 	}
 

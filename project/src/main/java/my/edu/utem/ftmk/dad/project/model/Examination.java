@@ -151,7 +151,5 @@ public class Examination {
 	public void setInvigilator(Staff invigilator) {
 		this.invigilator = invigilator;
 	}
-
-	
 	
 }

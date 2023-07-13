@@ -18,21 +18,49 @@ import org.springframework.web.bind.annotation.RestController;
 import my.edu.utem.ftmk.dad.project.model.Attendance;
 import my.edu.utem.ftmk.dad.project.repository.AttendanceRepository;
 
+
+
+/**
+ * 
+ * REST controller for managing Attendance resources.
+ * @author Group 28
+ *
+ */
 @RestController
 @RequestMapping("/api/attendances")
 public class AttendanceRestController {
 	@Autowired
 	private AttendanceRepository attendanceRepository;
 	
+	/**
+	 * Retrieves all attendances.
+	 * 
+	 * @return the list of the attendance
+	 */
+	
 	@GetMapping
 	public List<Attendance> getAttendances(){
 		return attendanceRepository.findAll();
 	}
 	
+	/**
+	 * Retrieves attendances for specific examination.
+	 * 
+	 * @param examinationid is the ID of examination
+	 * @return List of the attendance of specific examination
+	 */
+	
 	@GetMapping("/examination/{examinationid}")
 	public List<Attendance> getAttendance(@PathVariable long examinationid){
 		return attendanceRepository.findAllByExaminationId(examinationid);
 	}
+	
+	/**
+	 * Inserts a new attendance record.
+	 *
+	 * @param attendance the attendance object to be inserted
+	 * @return the inserted attendance object
+	 */
 	
 	@PostMapping
 	public Attendance insertAttendance(@RequestBody Attendance attendance) {
@@ -41,10 +69,24 @@ public class AttendanceRestController {
 		return attendanceRepository.save(attendance);
 	}
 	
+	/**
+	  * Updates an existing attendance record.
+	 *
+	 * @param attendance the attendance object to be updated
+	 * @return the updated attendance object
+	 */
+	
 	@PutMapping
 	public Attendance putAttendance(@RequestBody Attendance attendance) {
 		return attendanceRepository.save(attendance);
 	}
+	
+	/**
+	 * Deletes an attendance record by ID.
+	 *
+	 * @param attendanceId the ID of the attendance record to be deleted
+	 * @return the HTTP status indicating the result of the deletion operation
+	 */
 	
 	@DeleteMapping("{attendanceId}")
 	public ResponseEntity<HttpStatus> deleteAttendance(@PathVariable long attendanceId){

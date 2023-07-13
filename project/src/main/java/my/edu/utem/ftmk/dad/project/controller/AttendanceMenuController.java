@@ -15,9 +15,21 @@ import my.edu.utem.ftmk.dad.project.model.Attendance;
 import my.edu.utem.ftmk.dad.project.model.Examination;
 import my.edu.utem.ftmk.dad.project.model.Student;
 
+	/**
+	 * Rest controller class for managing the Attendance Menu
+	 * @author Group 28
+	 */
+
 @Controller
 public class AttendanceMenuController {
-
+	
+	 /**
+     * Retrieves the list of attendance and populates the model.
+     *
+     * @param model the Model object to hold the attributes for the view
+     * @return the view name "attendancemenu"
+     */
+	
 	@GetMapping("/attendance/list")
 	public String getAttendance(Model model){
 		
@@ -36,6 +48,13 @@ public class AttendanceMenuController {
 		return "attendancemenu";
 	}
 	
+	/**
+     * Displays the Matric Card Reader page and sets the necessary attributes in the model.
+     *
+     * @param model the Model object to hold the attributes for the view
+     * @return the view name "matriccardreader"
+     */
+	
 	@GetMapping("/attendance/matriccardreader")
 	public String displayrMatricCardReader(Model model){
 		
@@ -48,6 +67,13 @@ public class AttendanceMenuController {
 		return "matriccardreader";
 	}
 	
+	 /**
+     * Displays the Fingerprint Reader page and sets the necessary attributes in the model.
+     *
+     * @param model the Model object to hold the attributes for the view
+     * @return the view name "fingerprintreader"
+     */
+	
 	@GetMapping("/attendance/fingerprintreader")
 	public String displayFingerprintReader(Model model){
 
@@ -59,6 +85,12 @@ public class AttendanceMenuController {
 		
 		return "fingerprintreader";
 	}
+	
+	  /**
+     * Retrieves the list of examinations from the API.
+     *
+     * @return the list of Examination objects
+     */
 	
 	private List<Examination> getExaminations(){
 		String uri = "http://localhost:8080/attendanceapp/api/examinations";
@@ -200,6 +232,14 @@ public class AttendanceMenuController {
 
 		return "recordedattendance";
 	}
+
+	/**
+	 * Validates the attendance based on the examination time and the attendance end time.
+	 *
+	 * @param exam the Examination object representing the exam details
+	 * @param attendance the Attendance object representing the attendance record
+	 * @return the attendance status, either "On-Time" or "Late"
+	 */
 	
 	private String validateAttendance(Examination exam, Attendance attendance) {
 		String attendanceStatus = "On-Time";

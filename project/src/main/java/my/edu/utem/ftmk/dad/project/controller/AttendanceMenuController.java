@@ -161,7 +161,7 @@ public class AttendanceMenuController {
 		}
 		else if (attendance.getAttendanceInputType().
 				compareTo("fingerprint reader") == 0) {
-			studentUri = "http://localhost:8080/attendanceapp/api/students/matricNo/" 
+			studentUri = "http://localhost:8080/attendanceapp/api/students/fingerprint/" 
 					+ attendance.getStudent().getFingerprintid();
 			returnPath = "redirect:/attendance/fingerprintreader";
 		}

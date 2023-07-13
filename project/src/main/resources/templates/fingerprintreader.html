@@ -15,7 +15,7 @@
         <div>
         	<select name="attendance.examination" id="exam" th:field="*{examination.id}" >
         		<option th:each="examination: ${examinations}" 
-        		th:value=${examination.id}>[[${examination.course.coursename}]] - [[${examination.examtime}]]</option>
+        		th:value=${examination.id}>[[${examination.course.courseName}]] - [[${examination.examTime}]]</option>
         	</select>
         </div>
         </div>
@@ -24,7 +24,7 @@
           <div>
             <label for="fingerprintid">Enter fingerprint id</label>
             <div>
-              <input type="text" name="attendance.student.fingerprintid" th:field="*{student.fingerprintid}"
+              <input type="text" name="attendance.student.fingerprintId" th:field="*{student.fingerprintId}"
                 id="fingerprint" />
             </div>
           </div>

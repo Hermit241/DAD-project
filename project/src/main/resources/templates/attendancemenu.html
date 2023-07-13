@@ -22,12 +22,12 @@
         </thead>
         <tbody>
           <tr th:each="attendance : ${attendances}">
-            <th scope="row">[[${attendance.student.matricno}]]</th>
-            <td>[[${attendance.student.studentname}]]</td>
-            <td>[[${attendance.examination.course.coursename}]] - [[${attendance.examination.course.coursecode}]]</td>
-            <td>[[${attendance.examination.examtime}]]</td>
-            <td>[[${attendance.attendtime}]]</td>
-            <td>[[${attendance.attendancestatus}]]</td>
+            <th scope="row">[[${attendance.student.matricNo}]]</th>
+            <td>[[${attendance.student.studentName}]]</td>
+            <td>[[${attendance.examination.course.courseName}]] - [[${attendance.examination.course.courseCode}]]</td>
+            <td>[[${attendance.examination.examTime}]]</td>
+            <td>[[${attendance.attendTime}]]</td>
+            <td>[[${attendance.attendanceStatus}]]</td>
           </tr>
         </tbody>
       </table>

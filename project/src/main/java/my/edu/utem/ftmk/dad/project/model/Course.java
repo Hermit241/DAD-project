@@ -11,6 +11,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+/**
+ * This is the Model class for Course
+ * 
+ * @author Group 28
+ *
+ */
+
 @Entity
 @Table(name="courses")
 public class Course {
@@ -19,39 +26,75 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	
 	@Column(name="coursename")
-	private String coursename;
+	private String courseName;
+	
 	@Column(name="coursecode")
-	private String coursecode;
+	private String courseCode;
+	
 	@Column(name="lecturer")
 	private int lecturer;
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="course")
 	private Set<StudentCourse> studentCourseSet;
-	
+
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
-	public int getLecturer() {
-		return lecturer;
-	}
-	public void setLecturer(int lecturer) {
-		this.lecturer = lecturer;
-	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCoursename() {
-		return coursename;
+
+	/**
+	 * @return the courseName
+	 */
+	public String getCourseName() {
+		return courseName;
 	}
-	public void setCoursename(String coursename) {
-		this.coursename = coursename;
+
+	/**
+	 * @param courseName the courseName to set
+	 */
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
-	public String getCoursecode() {
-		return coursecode;
+
+	/**
+	 * @return the courseCode
+	 */
+	public String getCourseCode() {
+		return courseCode;
 	}
-	public void setCoursecode(String coursecode) {
-		this.coursecode = coursecode;
+
+	/**
+	 * @param courseCode the courseCode to set
+	 */
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
 	}
+
+	/**
+	 * @return the lecturer
+	 */
+	public int getLecturer() {
+		return lecturer;
+	}
+
+	/**
+	 * @param lecturer the lecturer to set
+	 */
+	public void setLecturer(int lecturer) {
+		this.lecturer = lecturer;
+	}
+	
+	
 	
 }

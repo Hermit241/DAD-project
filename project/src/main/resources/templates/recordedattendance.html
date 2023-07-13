@@ -8,20 +8,20 @@
 	<h2>Your attendance has been successfully recorded.</h2>
 	<br>
 	<div>
-		<div><strong>Name:</strong> <span th:text="${attendance.student.studentname}"></span></div>
+		<div><strong>Name:</strong> <span th:text="${attendance.student.studentName}"></span></div>
 		<br>
-		<div><strong>Matric no:</strong> <span th:text="${attendance.student.matricno}"></span></div>
+		<div><strong>Matric no:</strong> <span th:text="${attendance.student.matricNo}"></span></div>
 		<br>
 		<div><strong>Examination course:</strong> 
-			<span th:text="${attendance.examination.course.coursename} +' - '+ ${attendance.examination.course.coursecode}">
+			<span th:text="${attendance.examination.course.courseName} +' - '+ ${attendance.examination.course.courseCode}">
 			</span>
 		</div>
 		<br>
-		<div><strong>Exam time:</strong> <span th:text="${attendance.examination.examtime}"></span></div>
+		<div><strong>Exam time:</strong> <span th:text="${attendance.examination.examTime}"></span></div>
 		<br>
-		<div><strong>Time attended:</strong> <span th:text="${attendance.attendtime}"></span></div>
+		<div><strong>Time attended:</strong> <span th:text="${attendance.attendTime}"></span></div>
 		<br>
-		<div><strong>Attendance status:</strong> <span th:text="${attendance.attendancestatus}"></span></div>
+		<div><strong>Attendance status:</strong> <span th:text="${attendance.attendanceStatus}"></span></div>
 		<br>
 		<div><strong>Attendance type:</strong> <span th:text="${attendance.attendanceInputType}"></span></div>
 	</div>

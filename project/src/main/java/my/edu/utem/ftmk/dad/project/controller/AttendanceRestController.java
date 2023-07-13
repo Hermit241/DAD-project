@@ -65,7 +65,7 @@ public class AttendanceRestController {
 	@PostMapping
 	public Attendance insertAttendance(@RequestBody Attendance attendance) {
 		Time time = new Time(System.currentTimeMillis());
-		attendance.setAttendtime(time);
+		attendance.setAttendTime(time);
 		return attendanceRepository.save(attendance);
 	}
 	

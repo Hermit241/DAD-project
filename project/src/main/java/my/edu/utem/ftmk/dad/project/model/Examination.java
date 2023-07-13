@@ -14,6 +14,13 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Model class for Examination
+ * 
+ * @author Group 28
+ *
+ */
+
 @Entity
 @Table(name="examinations")
 public class Examination {
@@ -22,18 +29,24 @@ public class Examination {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	
 	@Column(name="venue")
 	private String venue;
+	
 	@Column(name="sessiongroup")
-	private String sessiongroup;
+	private String sessionGroup;
+	
 	@Column(name="examtime")
-	private Time examtime;
+	private Time examTime;
+	
 	@OneToOne
 	@JoinColumn(name="course")
 	private Course course;
+	
 	@OneToOne
 	@JoinColumn(name="chiefinvigilator")
 	private Staff chiefInvigilator;
+	
 	@OneToOne
 	@JoinColumn(name="invigilator")
 	private Staff invigilator;
@@ -41,53 +54,104 @@ public class Examination {
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="examination")
 	private Set<Attendance> attendances;
 
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	/**
+	 * @return the venue
+	 */
 	public String getVenue() {
 		return venue;
 	}
+
+	/**
+	 * @param venue the venue to set
+	 */
 	public void setVenue(String venue) {
 		this.venue = venue;
 	}
-	public String getSessiongroup() {
-		return sessiongroup;
+
+	/**
+	 * @return the sessionGroup
+	 */
+	public String getSessionGroup() {
+		return sessionGroup;
 	}
-	public void setSessiongroup(String sessiongroup) {
-		this.sessiongroup = sessiongroup;
+
+	/**
+	 * @param sessionGroup the sessionGroup to set
+	 */
+	public void setSessionGroup(String sessionGroup) {
+		this.sessionGroup = sessionGroup;
 	}
-	public Time getExamtime() {
-		return examtime;
+
+	/**
+	 * @return the examTime
+	 */
+	public Time getExamTime() {
+		return examTime;
 	}
-	public void setExamtime(Time examtime) {
-		this.examtime = examtime;
+
+	/**
+	 * @param examTime the examTime to set
+	 */
+	public void setExamTime(Time examTime) {
+		this.examTime = examTime;
 	}
+
+	/**
+	 * @return the course
+	 */
 	public Course getCourse() {
 		return course;
 	}
+
+	/**
+	 * @param course the course to set
+	 */
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+
+	/**
+	 * @return the chiefInvigilator
+	 */
 	public Staff getChiefInvigilator() {
-		Staff staff = new Staff();
-		staff.setId(chiefInvigilator.getId());
-		staff.setStaffname(chiefInvigilator.getStaffname());
-		return staff;
+		return chiefInvigilator;
 	}
+
+	/**
+	 * @param chiefInvigilator the chiefInvigilator to set
+	 */
 	public void setChiefInvigilator(Staff chiefInvigilator) {
 		this.chiefInvigilator = chiefInvigilator;
 	}
+
+	/**
+	 * @return the invigilator
+	 */
 	public Staff getInvigilator() {
-		Staff staff = new Staff();
-		staff.setId(invigilator.getId());
-		staff.setStaffname(invigilator.getStaffname());
-		return staff;
+		return invigilator;
 	}
+
+	/**
+	 * @param invigilator the invigilator to set
+	 */
 	public void setInvigilator(Staff invigilator) {
 		this.invigilator = invigilator;
 	}
 
+	
+	
 }

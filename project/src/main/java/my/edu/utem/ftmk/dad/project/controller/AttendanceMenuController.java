@@ -155,14 +155,14 @@ public class AttendanceMenuController {
 		if (attendance.getAttendanceInputType().
 				compareTo("matric card reader") == 0) {
 			studentUri = "http://localhost:8080/attendanceapp/api/students/matricNo/" 
-				+ attendance.getStudent().getMatricno();
+				+ attendance.getStudent().getMatricNo();
 			
 			returnPath = "redirect:/attendance/matriccardreader";
 		}
 		else if (attendance.getAttendanceInputType().
 				compareTo("fingerprint reader") == 0) {
 			studentUri = "http://localhost:8080/attendanceapp/api/students/fingerprint/" 
-					+ attendance.getStudent().getFingerprintid();
+					+ attendance.getStudent().getFingerprintId();
 			returnPath = "redirect:/attendance/fingerprintreader";
 		}
 			
@@ -189,7 +189,7 @@ public class AttendanceMenuController {
 				restTemplate.postForEntity(
 						attendanceUri, attendance, Attendance.class);
 		attendance = attendanceResponse.getBody();
-		attendance.setAttendancestatus(
+		attendance.setAttendanceStatus(
 				validateAttendance(attendance.getExamination(), attendance));
 		restTemplate.put(attendanceUri, attendance, Attendance.class);
 		
@@ -204,8 +204,8 @@ public class AttendanceMenuController {
 	private String validateAttendance(Examination exam, Attendance attendance) {
 		String attendanceStatus = "On-Time";
 
-		long timeDiff = attendance.getAttendtime().getTime() 
-				- exam.getExamtime().getTime();
+		long timeDiff = attendance.getAttendTime().getTime() 
+				- exam.getExamTime().getTime();
 		long lateTime = 10 * 60 * 1000;
 		
 		/* 

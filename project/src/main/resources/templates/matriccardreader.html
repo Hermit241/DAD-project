@@ -15,17 +15,17 @@
         <div>
         	<select name="attendance.examination" id="exam" th:field="*{examination.id}" >
         		<option th:each="examination: ${examinations}" 
-        		th:value=${examination.id}>[[${examination.course.coursename}]] - [[${examination.examtime}]]</option>
+        		th:value=${examination.id}>[[${examination.course.courseName}]] - [[${examination.examTime}]]</option>
         	</select>
         </div>
         </div>
 
         <div>
           <div>
-            <label for="matricno">Enter Matric No</label>
+            <label for="matricNo">Enter Matric No</label>
             <div>
-              <input type="text" name="attendance.student.matricno" th:field="*{student.matricno}"
-                id="matricno" />
+              <input type="text" name="attendance.student.matricNo" th:field="*{student.matricNo}"
+                id="matricNo" />
             </div>
           </div>
 			

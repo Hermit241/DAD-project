@@ -22,14 +22,18 @@ public class Student {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	
 	@Column(name="studentname")
-	private String studentname;
+	private String studentName;
+	
 	@Column(name="matricno")
-	private String matricno;
+	private String matricNo;
+	
 	@Column(name="sessiongroup")
-	private String sessiongroup;
+	private String sessionGroup;
+	
 	@Column(name="fingerprintid")
-	private String fingerprintid;
+	private String fingerprintId;
 	
 	@ManyToOne
 	@JoinColumn(name="advisor")
@@ -41,47 +45,105 @@ public class Student {
 	
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="student")
 	private Set<Attendance> attendances;
-	
-	public Set<StudentCourse> getStudentCourseSet() {
-		return studentCourseSet;
-	}
+
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getStudentname() {
-		return studentname;
+
+	/**
+	 * @return the studentName
+	 */
+	public String getStudentName() {
+		return studentName;
 	}
-	public void setStudentname(String studentname) {
-		this.studentname = studentname;
+
+	/**
+	 * @param studentName the studentName to set
+	 */
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
 	}
-	public String getMatricno() {
-		return matricno;
+
+	/**
+	 * @return the matricNo
+	 */
+	public String getMatricNo() {
+		return matricNo;
 	}
-	public void setMatricno(String matricno) {
-		this.matricno = matricno;
+
+	/**
+	 * @param matricNo the matricNo to set
+	 */
+	public void setMatricNo(String matricNo) {
+		this.matricNo = matricNo;
 	}
-	public String getSessiongroup() {
-		return sessiongroup;
+
+	/**
+	 * @return the sessionGroup
+	 */
+	public String getSessionGroup() {
+		return sessionGroup;
 	}
-	public void setSessiongroup(String sessiongroup) {
-		this.sessiongroup = sessiongroup;
+
+	/**
+	 * @param sessionGroup the sessionGroup to set
+	 */
+	public void setSessionGroup(String sessionGroup) {
+		this.sessionGroup = sessionGroup;
 	}
-	public String getFingerprintid() {
-		return fingerprintid;
+
+	/**
+	 * @return the fingerprintId
+	 */
+	public String getFingerprintId() {
+		return fingerprintId;
 	}
-	public void setFingerprintid(String fingerprintid) {
-		this.fingerprintid = fingerprintid;
+
+	/**
+	 * @param fingerprintId the fingerprintId to set
+	 */
+	public void setFingerprintId(String fingerprintId) {
+		this.fingerprintId = fingerprintId;
 	}
+
+	/**
+	 * @return the advisor
+	 */
 	public Staff getAdvisor() {
-		Staff staff = new Staff();
-		staff.setId(advisor.getId());
-		staff.setStaffname(advisor.getStaffname());
+		Staff staff = advisor;
+		staff.setAcademicAdvisees(null);
 		return staff;
 	}
+
+	/**
+	 * @param advisor the advisor to set
+	 */
 	public void setAdvisor(Staff advisor) {
 		this.advisor = advisor;
 	}
+
+	/**
+	 * @return the studentCourseSet
+	 */
+	public Set<StudentCourse> getStudentCourseSet() {
+		return studentCourseSet;
+	}
+
+	/**
+	 * @param studentCourseSet the studentCourseSet to set
+	 */
+	public void setStudentCourseSet(Set<StudentCourse> studentCourseSet) {
+		this.studentCourseSet = studentCourseSet;
+	}
+		
 }

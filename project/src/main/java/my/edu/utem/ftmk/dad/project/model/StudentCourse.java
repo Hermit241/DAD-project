@@ -11,6 +11,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
+/**
+ * Model class for StudentCourses
+ * 
+ * @author Group 28
+ *
+ */
+
 @Entity
 @Table(name="studentcourses")
 public class StudentCourse {

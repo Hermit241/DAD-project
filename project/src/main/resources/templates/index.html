@@ -3,24 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Attendance Index</title>
-   
-	<link rel="stylesheet" type="text/css" th:href="@{/resources/templates/css/style.css}" />
-
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-
-    <h1>Welcome to Attendance Index</h1>
-    
-    <div class="nav-container">
-        <div class="nav-item">
-            <a class="nav-link" th:href="@{/attendance/list}">View Attendance</a>
-        </div>
-        <div class="nav-item">
-            <a class="nav-link" th:href="@{/attendance/matriccardreader}">Matric Card Reader</a>
-        </div>
-        <div class="nav-item">
-            <a class="nav-link" th:href="@{/attendance/fingerprintreader}">Fingerprint Reader</a>
-        </div>
-    </div>
+    <h1>Welcome To Examination Attendance System</h1>
+    <div th:replace="fragments/header :: header"></div>  
 </body>
 </html>

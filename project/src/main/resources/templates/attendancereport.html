@@ -1,52 +1,56 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Attendance Report</title>
+    <meta charset="ISO-8859-1">
+    <title>Attendance Report</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-<div>
-<h1>List of Attendances</h1>
-</div>
-<div>
-		<div><strong>Examination course:</strong> <span th:text="${examination.course.courseName}"></span></div>
-		<br>
-		<div><strong>Course Code:</strong> <span th:text="${examination.course.courseCode}"></span></div>
-		<br>
-		<div><strong>Exam time:</strong> <span th:text="${examination.examTime}"></span></div>
-	</div>
-<br>
-<div>
-<a th:href="@{/attendance/list}">Back</a>
-</div>
-<br>
-<div th:if="${attendances.size() > 0}">
-      <table border="1">
-        <thead >
-          <tr>
-            <th scope="col">Matric No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Exam Time</th>
-            <th scope="col">Time attended</th>
-            <th scope="col">status</th>
-            <!-- <th scope="col">Action</th>  -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="attendance : ${attendances}">
-            <th scope="row">[[${attendance.student.matricNo}]]</th>
-            <td>[[${attendance.student.studentName}]]</td>
-            <td>[[${attendance.examination.examTime}]]</td>
-            <td>[[${attendance.attendTime}]]</td>
-            <td>[[${attendance.attendanceStatus}]]</td>
-          </tr>
-        </tbody>
-      </table>
+    <div>
+        <h1>List of Attendances</h1>
+        <div th:replace="fragments/header :: header"></div>
+    </div>
+    <div>
+        <div><strong>Examination course:</strong> 
+        <span th:text="${examination.course.courseName}"></span></div>
+        <br>
+        <div><strong>Course Code:</strong> 
+        <span th:text="${examination.course.courseCode}"></span></div>
+        <br>
+        <div><strong>Exam time:</strong> 
+        <span th:text="${examination.examTime}"></span></div>
+    </div>
+    <br>
+    <div>
+        <!-- <a th:href="@{/attendance/list}">Back</a> -->
+    </div>
+    <br>
+    <div th:if="${attendances.size() > 0}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th scope="col">Matric No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Exam Time</th>
+                    <th scope="col">Time attended</th>
+                    <th scope="col">Status</th>
+                    <!-- <th scope="col">Action</th>  -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="attendance : ${attendances}">
+                    <th scope="row">[[${attendance.student.matricNo}]]</th>
+                    <td>[[${attendance.student.studentName}]]</td>
+                    <td>[[${attendance.examination.examTime}]]</td>
+                    <td>[[${attendance.attendTime}]]</td>
+                    <td>[[${attendance.attendanceStatus}]]</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div th:unless="${attendances.size() > 0}">
-      <span>No record found!</span>
+        <span>No record found!</span>
     </div>
-
 </body>
 </html>

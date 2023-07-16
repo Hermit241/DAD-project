@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="nav-item">
+                <a class="nav-link" th:href="@{/attendance/index}">Home</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" th:href="@{/attendance/list}">View Attendance</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" th:href="@{/attendance/matriccardreader}">Matric Card Reader</a>
+            </div>
+            <div class="nav-item">
+                <a class="nav-link" th:href="@{/attendance/fingerprintreader}">Fingerprint Reader</a>
+            </div>
+        </div>
+    </header>
+</body>
+</html>

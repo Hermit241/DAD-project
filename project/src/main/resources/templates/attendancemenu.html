@@ -3,98 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Student Attendance</title>
-    <style>
-     body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
-         h1 {
-            color: #333;
-            text-align: center;
-            margin-top: 50px;
-        }
-        /* Table styles */
-        
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        /* Other styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
-         h1 {
-            color: #333;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .no-record {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-<h1>List of Attendances</h1>
-<br>
-<div>
-	<div><label>Choose an examination to view student's attendance for that examination.</label></div>
-    <form th:action="@{/attendance/attendance-report}" th:object="${exam}" method="get" enctype="multipart/form-data">
+    <h1>List of Attendances</h1>
+    <div th:replace="fragments/header :: header"></div>
+    <br>
     <div>
-      	<div>
-      	<br>
-	      <div>
-	      	<select name="exam" id="exam" th:field="*{id}" >
-	      		<option th:each="examination: ${examinations}" 
-	      		th:value=${examination.id}>[[${examination.course.courseName}]] - [[${examination.examTime}]]</option>
-	      	</select>
-	      </div>
-	   </div>
-	   <br>
         <div>
-          <input type="submit" value="Enter" />
-          <input type="reset" value="Clear" />
+            <label>Choose an examination to view students' attendance for that examination.</label>
         </div>
-      </div>
-    </form>
-</div>
-<br>
-<div th:if="${attendances.size() > 0}">
-      <table border="1">
-        <thead >
-          <tr>
-            <th scope="col">Matric No</th>
-            <th scope="col">Name</th>
-            <th scope="col">Examination Course</th>
-            <th scope="col">Exam Time</th>
-            <th scope="col">Time attended</th>
-            <th scope="col">status</th>
-            <!-- <th scope="col">Action</th>  -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="attendance : ${attendances}">
-            <th scope="row">[[${attendance.student.matricNo}]]</th>
-            <td>[[${attendance.student.studentName}]]</td>
-            <td>[[${attendance.examination.course.courseName}]] - [[${attendance.examination.course.courseCode}]]</td>
-            <td>[[${attendance.examination.examTime}]]</td>
-            <td>[[${attendance.attendTime}]]</td>
-            <td>[[${attendance.attendanceStatus}]]</td>
-          </tr>
-        </tbody>
-      </table>
+        <form th:action="@{/attendance/attendance-report}" th:object="${exam}" method="get" enctype="multipart/form-data">
+            <div>
+                <div><br>
+                    <div>
+                        <select name="exam" id="exam" th:field="*{id}">
+                            <option th:each="examination: ${examinations}" th:value="${examination.id}">
+                                [[${examination.course.courseName}]] - [[${examination.examTime}]]
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <input type="submit" value="Enter" />
+                    <input type="reset" value="Clear" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <br>
+    <div th:if="${attendances.size() > 0}">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th scope="col">Matric No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Examination Course</th>
+                    <th scope="col">Exam Time</th>
+                    <th scope="col">Time attended</th>
+                    <th scope="col">Status</th>
+                    <!-- <th scope="col">Action</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="attendance : ${attendances}">
+                    <th scope="row">[[${attendance.student.matricNo}]]</th>
+                    <td>[[${attendance.student.studentName}]]</td>
+                    <td>[[${attendance.examination.course.courseName}]] - [[${attendance.examination.course.courseCode}]]</td>
+                    <td>[[${attendance.examination.examTime}]]</td>
+                    <td>[[${attendance.attendTime}]]</td>
+                    <td>[[${attendance.attendanceStatus}]]</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div th:unless="${attendances.size() > 0}" class="no-record">

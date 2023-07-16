@@ -1,42 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Matric Card Reader</title>
+    <meta charset="ISO-8859-1">
+    <title>Matric Card Reader</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-<div>
-    <h2 >Matric Card Reader</h2>
-
-    <div >
-      <form th:action="@{/attendance/save}" th:object="${attendance}" method="post" enctype="multipart/form-data">
-        <div>
-        <div><label for="exam">Examinations</label></div>
-        <div>
-        	<select name="attendance.examination" id="exam" th:field="*{examination.id}" >
-        		<option th:each="examination: ${examinations}" 
-        		th:value=${examination.id}>[[${examination.course.courseName}]] - [[${examination.examTime}]]</option>
-        	</select>
-        </div>
-        </div>
-
-        <div>
-          <div>
-            <label for="matricNo">Enter Matric No</label>
-            <div>
-              <input type="text" name="attendance.student.matricNo" th:field="*{student.matricNo}"
-                id="matricNo" />
-            </div>
-          </div>
-			
-          <div>
-          	<input type="hidden" th:value="${attendanceInputType}" th:field="*{attendanceInputType}"/>
-            <input type="submit" value="Enter" />
-            <input type="reset" value="Clear" />
-          </div>
-        </div>
-      </form>
+    <div>
+        <h1>Matric Card Reader</h1>
+        <div th:replace="fragments/header :: header"></div>
     </div>
-  </div>
+    <div>
+        <form th:action="@{/attendance/save}" th:object="${attendance}" method="post" enctype="multipart/form-data">
+            <div>
+                <div>
+                    <label for="exam">Examinations</label>
+                </div>
+                <div>
+                    <select name="attendance.examination" id="exam" th:field="*{examination.id}">
+                        <option th:each="examination: ${examinations}" th:value="${examination.id}">
+                            [[${examination.course.courseName}]] - [[${examination.examTime}]]
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <div>
+                    <label for="matricNo">Enter Matric No</label>
+                </div>
+                <div>
+                    <input type="text" name="attendance.student.matricNo" th:field="*{student.matricNo}" id="matricNo" />
+                </div>
+            </div>
+
+            <div>
+                <input type="hidden" th:value="${attendanceInputType}" th:field="*{attendanceInputType}" />
+                <input type="submit" value="Enter" />
+                <input type="reset" value="Clear" />
+            </div>
+        </form>
+    </div>
 </body>
 </html>

@@ -30,6 +30,14 @@ public class AttendanceMenuController {
 		return "index";
 	}
 	
+	@GetMapping("/attendance/header")
+	public String getheader(){
+		
+	
+		return "header";
+	}
+	
+	
 	 /**
      * Retrieves the list of attendance and populates the model.
      *

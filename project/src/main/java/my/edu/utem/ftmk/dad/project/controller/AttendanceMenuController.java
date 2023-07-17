@@ -23,12 +23,29 @@ import my.edu.utem.ftmk.dad.project.model.Student;
 @Controller
 public class AttendanceMenuController {
 	
+	/**
+	 * This method handles the GET request 
+	 * for the "/attendance/index" endpoint.
+	 * 
+	 * @return "index" to indicate that 
+	 * the "index.html" Thymeleaf template should be rendered
+	 */
+	
 	@GetMapping("/attendance/index")
 	public String getIndex(){
 		
 	
 		return "index";
 	}
+	
+	/**
+	 * This method handles the GET request 
+	 * for the "/attendance/header" endpoint.
+	 * 
+	 * 
+	 * @return "header" to indicate that 
+	 * the "header.html" Thymeleaf template should be rendered
+	 */
 	
 	@GetMapping("/attendance/header")
 	public String getheader(){

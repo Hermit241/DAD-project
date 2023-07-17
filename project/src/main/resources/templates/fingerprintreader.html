@@ -9,6 +9,7 @@
     <div>
         <h1>Fingerprint Reader</h1>
         <div th:replace="fragments/header :: header"></div>
+        <br>
     </div>
     <div>
         <form th:action="@{/attendance/save}" th:object="${attendance}" method="post" enctype="multipart/form-data">

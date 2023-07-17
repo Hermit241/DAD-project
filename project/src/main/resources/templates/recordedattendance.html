@@ -3,10 +3,12 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Attendance Recorded</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<h2>Your attendance has been successfully recorded.</h2>
-	<br>
+<div th:replace="fragments/header :: header"></div>  
+<br>
+	<h2>Your attendance has been successfully recorded.</h2>	
 	<div>
 		<div><strong>Name:</strong> <span th:text="${attendance.student.studentName}"></span></div>
 		<br>

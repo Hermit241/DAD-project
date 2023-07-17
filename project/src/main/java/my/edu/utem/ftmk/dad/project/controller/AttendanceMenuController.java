@@ -81,6 +81,16 @@ public class AttendanceMenuController {
 		return "attendancemenu";
 	}
 	
+	/**
+	 * This function retrieves an examination Model and compiles a 
+	 * list of attendance for that examination and passing it to the 
+	 * "attendancereport" html.
+	 * 
+	 * @param examination The Model binded to this function and "attendancereport" html
+	 * @param model A Model to pass to the "attendancereport" html
+	 * @return Displays the "attendancereport" html
+	 */
+	
 	@GetMapping("/attendance/attendance-report")
 	public String attendanceReport(@ModelAttribute("examination") Examination examination, Model model){
 

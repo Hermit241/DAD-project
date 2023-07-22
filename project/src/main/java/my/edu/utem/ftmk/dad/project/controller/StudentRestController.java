@@ -48,7 +48,7 @@ public class StudentRestController {
      */
 	
 	@GetMapping("/matricNo/{matricno}")
-	public Student getStudentByAdvisor(@PathVariable String matricno){
+	public Student getStudentByMatricNo(@PathVariable String matricno){
 		return studentRepository.findByMatricNo(matricno);
 	}
 	

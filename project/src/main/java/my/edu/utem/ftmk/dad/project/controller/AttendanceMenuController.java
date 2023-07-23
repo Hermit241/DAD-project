@@ -86,19 +86,28 @@ public class AttendanceMenuController {
 	 * list of attendance for that examination and passing it to the 
 	 * "attendancereport" html.
 	 * 
-	 * @param examination The Model binded to this function and "attendancereport" html
+	 * @param examination The Model binded to this function 
+	 * and "attendancereport" html
 	 * @param model A Model to pass to the "attendancereport" html
 	 * @return Displays the "attendancereport" html
 	 */
 	
 	@GetMapping("/attendance/attendance-report")
-	public String attendanceReport(@ModelAttribute("examination") Examination examination, Model model){
+	public String attendanceReport(
+			@ModelAttribute("examination") Examination examination,
+			Model model){
 
+		String serverPath =
+				"http://localhost:8080/attendanceapp";
+		
 		String attendanceUri =
-				"http://localhost:8080/attendanceapp/api/attendances/examination/" 
+				serverPath
+				+ "/api/attendances/examination/" 
 				+ examination.getId();
+		
 		String examinationUri = 
-				"http://localhost:8080/attendanceapp/api/examinations/"
+				serverPath
+				+ "/api/examinations/"
 				+ examination.getId();
 		
 		RestTemplate restTemplate = new RestTemplate();
@@ -120,7 +129,8 @@ public class AttendanceMenuController {
 	}
 	
 	/**
-     * Displays the Matric Card Reader page and sets the necessary attributes in the model.
+     * Displays the Matric Card Reader page 
+     * and sets the necessary attributes in the model.
      *
      * @param model the Model object to hold the attributes for the view
      * @return the view name "matriccardreader"
@@ -139,7 +149,8 @@ public class AttendanceMenuController {
 	}
 	
 	 /**
-     * Displays the Fingerprint Reader page and sets the necessary attributes in the model.
+     * Displays the Fingerprint Reader page 
+     * and sets the necessary attributes in the model.
      *
      * @param model the Model object to hold the attributes for the view
      * @return the view name "fingerprintreader"
@@ -234,7 +245,8 @@ public class AttendanceMenuController {
 	
 	/**
 	 * 
-	 * Processes the Post request from the frontend to save the attendance of the 
+	 * Processes the Post request from 
+	 * the frontend to save the attendance of the 
 	 * student.
 	 * 
 	 * @param attendance ModelAttribute of the attendance Object
@@ -247,25 +259,30 @@ public class AttendanceMenuController {
 	 */
 	
 	@PostMapping("/attendance/save")
-	public String saveAttendance(@ModelAttribute("attendance") Attendance attendance, Model model) {
+	public String saveAttendance(
+			@ModelAttribute("attendance") Attendance attendance, Model model) {
 		
-		String attendanceUri = "http://localhost:8080/attendanceapp/api/attendances";
-		String examUri = "http://localhost:8080/attendanceapp/api/examinations/"
+		String attendanceUri = 
+				"http://localhost:8080/attendanceapp/api/attendances";
+		String examUri = 
+				"http://localhost:8080/attendanceapp/api/examinations/"
 		+ attendance.getExamination().getId();
 		String studentUri = "";
 		String returnPath = "";
 		
 		if (attendance.getAttendanceInputType().
 				compareTo("matric card reader") == 0) {
-			studentUri = "http://localhost:8080/attendanceapp/api/students/matricNo/" 
+			studentUri = 
+				"http://localhost:8080/attendanceapp/api/students/matricNo/" 
 				+ attendance.getStudent().getMatricNo();
 			
 			returnPath = "redirect:/attendance/matriccardreader";
 		}
 		else if (attendance.getAttendanceInputType().
 				compareTo("fingerprint reader") == 0) {
-			studentUri = "http://localhost:8080/attendanceapp/api/students/fingerprint/" 
-					+ attendance.getStudent().getFingerprintId();
+			studentUri = 
+				"http://localhost:8080/attendanceapp/api/students/fingerprint/" 
+				+ attendance.getStudent().getFingerprintId();
 			returnPath = "redirect:/attendance/fingerprintreader";
 		}
 			
@@ -305,14 +322,17 @@ public class AttendanceMenuController {
 	}
 	
 	/**
-	 * Validates the attendance based on the examination time and the attendance end time.
+	 * Validates the attendance based on 
+	 * the examination time and the attendance end time.
 	 *
 	 * @param exam the Examination object representing the exam details
-	 * @param attendance the Attendance object representing the attendance record
+	 * @param attendance the Attendance object 
+	 * representing the attendance record
 	 * @return the attendance status, either "On-Time" or "Late"
 	 */
 	
-	private String validateAttendance(Examination exam, Attendance attendance) {
+	private String validateAttendance(
+			Examination exam, Attendance attendance) {
 		String attendanceStatus = "On-Time";
 
 		long timeDiff = attendance.getAttendTime().getTime() 
@@ -322,7 +342,8 @@ public class AttendanceMenuController {
 		/* 
 		 * Debugging print command, can be ignored
 		 * 
-		System.out.println(attendance.getAttendtime().getTime() +"|" + attendance.getAttendtime() 
+		System.out.println(
+		attendance.getAttendtime().getTime() +"|" + attendance.getAttendtime() 
 		+ " - " + exam.getExamtime().getTime() + "|" + exam.getExamtime());
 		System.out.println(timeDiff + " " + lateTime);
 		*/
